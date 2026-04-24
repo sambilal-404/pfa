@@ -1,0 +1,782 @@
+[
+  {
+    "method": "GET",
+    "url": "/api/users",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.57",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/users/1",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"email\": \"user@example.com\", \"password\": \"securePass123\"}",
+    "ip": "192.168.1.49",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/users?page=1&limit=10",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"username\": \"john_doe\", \"email\": \"john@example.com\"}",
+    "ip": "192.168.1.17",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/products",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"item_id\": 42, \"quantity\": 2}",
+    "ip": "192.168.1.47",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/products?category=electronics",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"name\": \"Alice\", \"age\": 30, \"city\": \"Paris\"}",
+    "ip": "192.168.1.57",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/products/42",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"feedback\": \"Great service, very happy!\"}",
+    "ip": "192.168.1.12",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "POST",
+    "url": "/api/auth/login",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"category\": \"books\", \"price_max\": 50}",
+    "ip": "192.168.1.28",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "POST",
+    "url": "/api/auth/register",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"}",
+    "ip": "192.168.1.57",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/orders",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.32",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/orders/123",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.41",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "PUT",
+    "url": "/api/users/1",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.45",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "DELETE",
+    "url": "/api/orders/456",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"email\": \"user@example.com\", \"password\": \"securePass123\"}",
+    "ip": "192.168.1.31",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/search?q=laptop",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"username\": \"john_doe\", \"email\": \"john@example.com\"}",
+    "ip": "192.168.1.55",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/search?q=coffee+machine&max_price=200",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"item_id\": 42, \"quantity\": 2}",
+    "ip": "192.168.1.11",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "POST",
+    "url": "/api/payments",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"name\": \"Alice\", \"age\": 30, \"city\": \"Paris\"}",
+    "ip": "192.168.1.17",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/categories",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"feedback\": \"Great service, very happy!\"}",
+    "ip": "192.168.1.12",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"category\": \"books\", \"price_max\": 50}",
+    "ip": "192.168.1.39",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/v1/status",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"}",
+    "ip": "192.168.1.37",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "POST",
+    "url": "/api/feedback",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.49",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/users/1/settings",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.53",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "PATCH",
+    "url": "/api/users/1",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.37",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/products?sort=price_asc&page=2",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"email\": \"user@example.com\", \"password\": \"securePass123\"}",
+    "ip": "192.168.1.47",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/notifications",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"username\": \"john_doe\", \"email\": \"john@example.com\"}",
+    "ip": "192.168.1.17",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "POST",
+    "url": "/api/cart",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"item_id\": 42, \"quantity\": 2}",
+    "ip": "192.168.1.24",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "DELETE",
+    "url": "/api/cart/items/99",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"name\": \"Alice\", \"age\": 30, \"city\": \"Paris\"}",
+    "ip": "192.168.1.57",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/reports?year=2024&month=1",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"feedback\": \"Great service, very happy!\"}",
+    "ip": "192.168.1.10",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/dashboard",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"category\": \"books\", \"price_max\": 50}",
+    "ip": "192.168.1.52",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/invoices/789",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"}",
+    "ip": "192.168.1.52",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "POST",
+    "url": "/api/uploads",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.15",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/metrics",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.47",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/users",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.28",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/users/1",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"email\": \"user@example.com\", \"password\": \"securePass123\"}",
+    "ip": "192.168.1.25",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/users?page=1&limit=10",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"username\": \"john_doe\", \"email\": \"john@example.com\"}",
+    "ip": "192.168.1.31",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/products",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"item_id\": 42, \"quantity\": 2}",
+    "ip": "192.168.1.21",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/products?category=electronics",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"name\": \"Alice\", \"age\": 30, \"city\": \"Paris\"}",
+    "ip": "192.168.1.16",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/products/42",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"feedback\": \"Great service, very happy!\"}",
+    "ip": "192.168.1.13",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "POST",
+    "url": "/api/auth/login",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"category\": \"books\", \"price_max\": 50}",
+    "ip": "192.168.1.45",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "POST",
+    "url": "/api/auth/register",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"}",
+    "ip": "192.168.1.19",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/orders",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.31",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/orders/123",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.51",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "PUT",
+    "url": "/api/users/1",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.57",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "DELETE",
+    "url": "/api/orders/456",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"email\": \"user@example.com\", \"password\": \"securePass123\"}",
+    "ip": "192.168.1.26",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/search?q=laptop",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"username\": \"john_doe\", \"email\": \"john@example.com\"}",
+    "ip": "192.168.1.17",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/search?q=coffee+machine&max_price=200",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"item_id\": 42, \"quantity\": 2}",
+    "ip": "192.168.1.11",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "POST",
+    "url": "/api/payments",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"name\": \"Alice\", \"age\": 30, \"city\": \"Paris\"}",
+    "ip": "192.168.1.38",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/categories",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"feedback\": \"Great service, very happy!\"}",
+    "ip": "192.168.1.13",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/health",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"category\": \"books\", \"price_max\": 50}",
+    "ip": "192.168.1.13",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/v1/status",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"}",
+    "ip": "192.168.1.55",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "POST",
+    "url": "/api/feedback",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.27",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/users/1/settings",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.44",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "PATCH",
+    "url": "/api/users/1",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.19",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/products?sort=price_asc&page=2",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"email\": \"user@example.com\", \"password\": \"securePass123\"}",
+    "ip": "192.168.1.12",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/notifications",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"username\": \"john_doe\", \"email\": \"john@example.com\"}",
+    "ip": "192.168.1.44",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "POST",
+    "url": "/api/cart",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"item_id\": 42, \"quantity\": 2}",
+    "ip": "192.168.1.53",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "DELETE",
+    "url": "/api/cart/items/99",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"name\": \"Alice\", \"age\": 30, \"city\": \"Paris\"}",
+    "ip": "192.168.1.18",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/reports?year=2024&month=1",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"feedback\": \"Great service, very happy!\"}",
+    "ip": "192.168.1.17",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/dashboard",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"category\": \"books\", \"price_max\": 50}",
+    "ip": "192.168.1.11",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/invoices/789",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"}",
+    "ip": "192.168.1.51",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "POST",
+    "url": "/api/uploads",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.34",
+    "label": "legit",
+    "attack_type": null
+  },
+  {
+    "method": "GET",
+    "url": "/api/metrics",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Accept": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": "",
+    "ip": "192.168.1.43",
+    "label": "legit",
+    "attack_type": null
+  }
+]

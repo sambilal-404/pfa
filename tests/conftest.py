@@ -6,6 +6,12 @@ from __future__ import annotations
 
 import pytest
 
+import pytest
+from tests.export_requests import save_requests
+
+def pytest_sessionfinish(session, exitstatus):
+    save_requests()
+
 from src.config import AnomalyConfig, DetectionConfig, RateLimitConfig
 from src.engine.anomaly_detector import AnomalyDetector
 from src.engine.decision_engine import DecisionEngine
@@ -135,3 +141,8 @@ def cmdi_request() -> dict:
         "body": '{"host": "127.0.0.1; cat /etc/passwd"}',
         "ip_address": "10.0.0.4",
     }
+from tests.export_requests import save_requests_json, save_requests_raw
+
+def pytest_sessionfinish(session, exitstatus):
+    save_requests_json()
+    save_requests_raw()

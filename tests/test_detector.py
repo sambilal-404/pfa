@@ -1,8 +1,9 @@
 """
 Integration tests for the main DetectionEngine.
 """
-
 from __future__ import annotations
+from tests.export_requests import log_request
+
 
 import pytest
 

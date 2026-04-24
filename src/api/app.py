@@ -5,10 +5,11 @@ FastAPI application factory.
 from __future__ import annotations
 
 import logging
+import os
 from contextlib import asynccontextmanager
 from typing import Optional
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -18,6 +19,15 @@ from src.engine.detector import DetectionEngine
 from src.api.exceptions import validation_exception_handler
 
 
+# Conditional import for request logging (only in tests)
+try:
+    from tests.export_requests import log_request
+    REQUEST_LOGGING_ENABLED = True
+except ImportError:
+    REQUEST_LOGGING_ENABLED = False
+    log_request = None
+
+
 def setup_logging(level: str = "INFO") -> None:
     """Configure logging for the application."""
     logging.basicConfig(
@@ -25,6 +35,25 @@ def setup_logging(level: str = "INFO") -> None:
         format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
     )
+
+
+# Middleware to capture requests for testing
+async def request_capture_middleware(request: Request, call_next):
+    """Middleware to capture HTTP requests during testing."""
+    if REQUEST_LOGGING_ENABLED and log_request:
+        # Capture request data
+        body = await request.body()
+        request_data = {
+            "method": request.method,
+            "url": str(request.url.path) + ("?" + str(request.url.query) if request.url.query else ""),
+            "headers": dict(request.headers),
+            "body": body.decode("utf-8", errors="ignore") if body else "",
+        }
+        log_request(request_data)
+    
+    # Continue processing
+    response = await call_next(request)
+    return response
 
 
 @asynccontextmanager
@@ -81,6 +110,10 @@ def create_app(
         redoc_url="/redoc",
         lifespan=lifespan,
     )
+
+    # Add request capture middleware (for testing)
+    if REQUEST_LOGGING_ENABLED:
+        app.middleware("http")(request_capture_middleware)
 
     app.add_middleware(
         CORSMiddleware,

@@ -3,6 +3,9 @@ Tests for the FastAPI integration.
 """
 
 from __future__ import annotations
+from tests.export_requests import log_request
+
+
 
 import pytest
 from fastapi.testclient import TestClient
